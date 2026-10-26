@@ -6,6 +6,7 @@
 {%- capture cat -%}{% render 'brand', name: product.vendor, field: 'cat' %}{%- endcapture -%}
 <div class="container pd" data-product data-cart-add="{{ routes.cart_add_url }}" data-cart="{{ routes.cart_url }}" style="{{ vars }}">
   <script type="application/json" data-product-json>{{ product | json }}</script>
+  <script type="application/ld+json">{{ product | structured_data }}</script>
   <div class="pd-media">
     <div class="carousel-box" data-carousel>
       {%- for media in product.media -%}
@@ -28,7 +29,8 @@
   </div>
   <div>
     <div class="eyebrow" style="margin-bottom:8px">
-      <a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}{% if cat != blank %} — {{ cat }}{% endif %}</a>
+      {%- assign brand_handle = product.vendor | handle -%}{%- assign brand_col = collections[brand_handle] -%}
+      <a href="{% if brand_col.url != blank %}{{ brand_col.url }}{% else %}{{ product.vendor | url_for_vendor }}{% endif %}">{{ product.vendor }}{% if cat != blank %} — {{ cat }}{% endif %}</a>
     </div>
     <h1>{{ product.title }}</h1>
     <div class="intro">{{ desc_parts.first }}</div>

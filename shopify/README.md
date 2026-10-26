@@ -34,7 +34,7 @@ Rebuild the zip after editing the theme: `cd shopify/theme && rm -f ../vyam-them
 | `/brands` | `/collections` |
 | `/brand/smod` | `/collections/vendors?q=SMOD` — brand hero + story; brands with no products show "launching soon" |
 | Brand colours & copy | `theme/snippets/brand.liquid` (one line per brand, keyed by product **Vendor**) |
-| Per-variant image sets | Each image's **alt text** = variant name (e.g. "20 Pods"); the gallery shows the matching images |
+| Per-variant image sets | Each image's **alt text** contains the variant name (e.g. "SMOD Regular Laundry Pods, 20 Pods – front of pack"); the gallery shows the matching images |
 | "₹24.95 per wash" | Calculated from the variant name ("20 Pods" → price ÷ 20) |
 
 When a new brand launches, add its products with **Vendor** set exactly to the brand name (e.g. `FYND`) and change `soon` to `live` for it in `snippets/brand.liquid`.

@@ -6,6 +6,7 @@
     <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
     {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
+    {% render 'meta-tags' %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">

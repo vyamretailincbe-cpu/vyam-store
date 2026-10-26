@@ -23,7 +23,7 @@
       <div class="sec-head">
         {%- if is_brand -%}
           <div class="eyebrow">The Brand</div>
-          <p class="lead">{{ story }}</p>
+          <div class="lead">{% if collection.description != blank %}{{ collection.description }}{% else %}<p>{{ story }}</p>{% endif %}</div>
         {%- else -%}
           <div class="eyebrow">Shop</div>
           <h1 class="display">{% if collection.handle == 'all' %}All products.{% else %}{{ collection.title }}.{% endif %}</h1>

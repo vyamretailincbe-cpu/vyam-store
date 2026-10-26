@@ -10,7 +10,8 @@
         <h4>Brands</h4>
         {%- for raw in brands -%}
           {%- assign n = raw | strip -%}
-          <a href="{{ n | url_for_vendor }}">{{ n }}</a>
+          {%- assign brand_handle = n | handle -%}{%- assign brand_col = collections[brand_handle] -%}
+          <a href="{% if brand_col.url != blank %}{{ brand_col.url }}{% else %}{{ n | url_for_vendor }}{% endif %}">{{ n }}</a>
         {%- endfor -%}
       </div>
       <div class="foot-col">

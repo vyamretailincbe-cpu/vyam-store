@@ -33,7 +33,7 @@
     });
   });
 
-  // Image carousel. Slides are grouped by media alt text, which matches the variant title,
+  // Image carousel. Each image's alt text contains its variant title (e.g. "…, 20 Pods – front of pack"),
   // so each variant shows its own images; with no match all slides are shown.
   function Carousel(box) {
     var slides = $$(".cslide", box);
@@ -50,7 +50,7 @@
       if (active.length > 1) timer = setInterval(function () { if (!paused) go(i + 1); }, 5000);
     }
     function show(group) {
-      var matched = slides.filter(function (s) { return s.dataset.group === group; });
+      var matched = slides.filter(function (s) { return s.dataset.group.indexOf(group) !== -1; });
       active = matched.length ? matched : slides;
       i = 0;
       if (dots) {

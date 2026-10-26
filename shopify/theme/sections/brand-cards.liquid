@@ -9,11 +9,12 @@
     <div class="bcards{% if section.settings.large %} large{% endif %}">
       {%- for raw in brands -%}
         {%- assign n = raw | strip -%}
+        {%- assign brand_handle = n | handle -%}{%- assign brand_col = collections[brand_handle] -%}
         {%- capture vars -%}{% render 'brand', name: n, field: 'vars' %}{%- endcapture -%}
         {%- capture cat -%}{% render 'brand', name: n, field: 'cat' %}{%- endcapture -%}
         {%- capture pos -%}{% render 'brand', name: n, field: 'pos' %}{%- endcapture -%}
         {%- capture live -%}{% render 'brand', name: n, field: 'live' %}{%- endcapture -%}
-        <a class="bcard" href="{{ n | url_for_vendor }}" style="{{ vars }}">
+        <a class="bcard" href="{% if brand_col.url != blank %}{{ brand_col.url }}{% else %}{{ n | url_for_vendor }}{% endif %}" style="{{ vars }}">
           <div>
             <div class="bc-name">{{ n }}</div>
             <div class="bc-cat">{{ cat }}</div>
