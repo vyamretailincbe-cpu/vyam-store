@@ -1,1 +1,1 @@
-{ "sections": { "main": { "type": "main-cart", "settings": { "note": "Free shipping across India." } } }, "order": ["main"] }
+{ "sections": { "main": { "type": "main-cart", "settings": { "note": "Shipping is calculated at checkout." } } }, "order": ["main"] }
