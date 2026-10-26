@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "brands": {
+      "type": "brand-cards",
+      "settings": {
+        "eyebrow": "Our Brands",
+        "heading": "Built for<br>everyday life.",
+        "text": "A growing portfolio of consumer brands across the categories people use, care about and live with every day. All of them start with the same question: can this be better?",
+        "large": true
+      }
+    }
+  },
+  "order": ["brands"]
+}

@@ -1,0 +1,30 @@
+<header class="site">
+  <div class="container nav">
+    <a class="logo" href="{{ routes.root_url }}">{{ section.settings.logo_main }}<span>{{ section.settings.logo_accent }}</span></a>
+    <nav class="navlinks" aria-label="Main">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+      <a class="cartlink" href="{{ routes.cart_url }}">Cart <span class="bubble" data-cart-count{% if cart.item_count == 0 %} hidden{% endif %}>{{ cart.item_count }}</span></a>
+    </nav>
+    <button class="burger" type="button" aria-label="Menu" aria-expanded="false" data-menu-toggle><div></div><div></div><div></div></button>
+  </div>
+</header>
+<div class="mobilemenu" data-mobile-menu>
+  <a href="{{ routes.root_url }}">Home</a>
+  {%- for link in section.settings.menu.links -%}
+    <a href="{{ link.url }}">{{ link.title }}</a>
+  {%- endfor -%}
+  <a href="{{ routes.cart_url }}">Cart</a>
+</div>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    { "type": "text", "id": "logo_main", "label": "Logo text", "default": "VYA" },
+    { "type": "text", "id": "logo_accent", "label": "Logo accent letter(s)", "default": "M" },
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,20 @@
+{%- capture vars -%}{% render 'brand', name: product.vendor, field: 'vars' %}{%- endcapture -%}
+<a class="pcard" href="{{ product.url }}" style="{{ vars }}">
+  <div class="pimg">
+    {%- if product.featured_media -%}
+      {{ product.featured_media | image_url: width: 900 | image_tag: widths: '300,450,600,900', sizes: '(max-width: 600px) 50vw, (max-width: 900px) 33vw, 25vw', loading: 'lazy', alt: product.title }}
+    {%- else -%}
+      <div class="ph-tile"><span>{{ product.vendor }}</span></div>
+    {%- endif -%}
+  </div>
+  <div class="pbody">
+    <div class="pbrand">{{ product.vendor }}</div>
+    <h3>{{ product.title }}</h3>
+    <div class="pshort">{{ product.description | split: '<ul' | first | strip_html | truncatewords: 16 }}</div>
+    {%- if product.available -%}
+      <div class="pprice">{% if product.price_varies %}From {% endif %}{{ product.price_min | money_without_trailing_zeros }}</div>
+    {%- else -%}
+      <div class="soon">Sold out</div>
+    {%- endif -%}
+  </div>
+</a>

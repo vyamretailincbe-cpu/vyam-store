@@ -1,0 +1,62 @@
+{%- capture b_cat -%}{% render 'brand', name: collection.title, field: 'cat' %}{%- endcapture -%}
+{%- liquid
+  assign is_brand = false
+  if b_cat != blank and collection.handle != 'all'
+    assign is_brand = true
+  endif
+-%}
+{%- if is_brand -%}
+  {%- capture vars -%}{% render 'brand', name: collection.title, field: 'vars' %}{%- endcapture -%}
+  {%- capture pos -%}{% render 'brand', name: collection.title, field: 'pos' %}{%- endcapture -%}
+  {%- capture story -%}{% render 'brand', name: collection.title, field: 'story' %}{%- endcapture -%}
+  <div class="bhero" style="{{ vars }}">
+    <div class="container">
+      <div class="bcat">{{ b_cat }}</div>
+      <h1 class="bname">{{ collection.title }}</h1>
+      <div class="bpos">{{ pos }}</div>
+    </div>
+  </div>
+{%- endif -%}
+{%- paginate collection.products by 24 -%}
+  <section>
+    <div class="container">
+      <div class="sec-head">
+        {%- if is_brand -%}
+          <div class="eyebrow">The Brand</div>
+          <p class="lead">{{ story }}</p>
+        {%- else -%}
+          <div class="eyebrow">Shop</div>
+          <h1 class="display">{% if collection.handle == 'all' %}All products.{% else %}{{ collection.title }}.{% endif %}</h1>
+        {%- endif -%}
+      </div>
+      {%- if is_brand and collection.products_count == 0 -%}
+        <div class="notice">{{ collection.title }} is launching soon. <a class="textlink" href="{{ section.settings.notify_link | default: routes.root_url }}">Get notified / talk to us →</a></div>
+      {%- endif -%}
+      {%- if is_brand == false and shop.vendors.size > 1 -%}
+        <div class="chips">
+          <a class="chip{% if collection.handle == 'all' %} on{% endif %}" href="{{ routes.all_products_collection_url }}">All</a>
+          {%- for v in shop.vendors -%}
+            <a class="chip{% if collection.title == v %} on{% endif %}" href="{{ v | url_for_vendor }}">{{ v }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      <div class="pgrid">
+        {%- for product in collection.products -%}
+          {% render 'card', product: product %}
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="pager">{{ paginate | default_pagination }}</div>
+      {%- endif -%}
+    </div>
+  </section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Collection / brand page",
+  "settings": [
+    { "type": "url", "id": "notify_link", "label": "\"Get notified\" link for brands without products" }
+  ]
+}
+{% endschema %}

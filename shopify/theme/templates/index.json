@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "VYAM Store",
+        "heading": "Everyday products. Better ideas.",
+        "text": "We build consumer brands around the way people live, care and clean every day. SMOD laundry pods are here — more brands are on the way.",
+        "button_label": "Shop now →",
+        "image_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3IMyctpTEDyautVxPt2exFQaBqy/b3b640e5-798b-4551-a4c8-2322e8c51456.png",
+        "image_alt": "SMOD — Laundry Pods for Every Wash: Socks, Intimate Care, Sports, Baby and Regular"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Now Available",
+        "heading": "SMOD. Detergent, redesigned.",
+        "text": "Pre-measured laundry pods — no measuring cups, no mess, no guesswork.",
+        "limit": 4
+      }
+    },
+    "strip": {
+      "type": "dark-strip",
+      "settings": {
+        "eyebrow": "What's Next",
+        "heading": "Something new is quietly taking shape.",
+        "text": "FYND, KHIND, RIWERS and our pet care line are in the works. We're constantly exploring what's next in everyday consumer products.",
+        "button_label": "Meet the brands →",
+        "button_link": "/collections"
+      }
+    },
+    "brands": {
+      "type": "brand-cards",
+      "settings": {
+        "eyebrow": "Our Brands",
+        "heading": "Built for everyday life.",
+        "large": false
+      }
+    }
+  },
+  "order": ["hero", "featured", "strip", "brands"]
+}

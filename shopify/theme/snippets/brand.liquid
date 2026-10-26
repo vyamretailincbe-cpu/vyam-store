@@ -1,0 +1,48 @@
+{%- comment -%}
+  Brand data, keyed by product vendor / brand name. Fields are separated by "|":
+  name | tint | dark | gradient | category | positioning | story | live|soon
+  Usage: {% render 'brand', name: product.vendor, field: 'vars' %}
+  Fields: name, tint, dark, grad, cat, pos, story, live, vars (CSS custom properties).
+{%- endcomment -%}
+{%- liquid
+  assign key = name | handle
+  case key
+    when 'smod'
+      assign d = "SMOD|#E9EDFB|#1b2f8f|linear-gradient(150deg,#3b57d8,#1d2f7e)|Laundry • Home Care|Smarter choices. Made for everyday mess.|Detergent, redesigned. SMOD replaces messy powders and guess-work dosing with pre-measured laundry pods — smart dosing, maximum clean, optimised care and dependable freshness in every wash.|live"
+    when 'fynd'
+      assign d = "FYND|#FAE8F1|#8f1250|linear-gradient(150deg,#d42a80,#8f1250)|Colour Cosmetics|Colour made for expression.|Makeup isn't a mask — it's a mood. FYND builds colour cosmetics for people who treat makeup as everyday expression: easy to wear, easy to experiment with, made for real days.|soon"
+    when 'khind'
+      assign d = "KHIND|#E4F1EE|#0a594f|linear-gradient(150deg,#159884,#0a5a4f)|Oral Care • Personal Care|Everyday care, made simple.|Personal care is full of overcomplicated claims. KHIND takes the opposite view: the daily essentials, done properly — simple, effective and easy to trust.|soon"
+    when 'riwers'
+      assign d = "RIWERS|#EAEFE6|#25411f|linear-gradient(150deg,#476b40,#25411f)|Hair & Scalp Care|Rethinking everyday hair care.|Most hair care starts with the hair. RIWERS starts with the scalp — and the everyday realities that shape how hair actually behaves.|soon"
+    when 'pet-care'
+      assign d = "PET CARE|#F7EFDC|#7c5407|linear-gradient(150deg,#c78f1c,#7c5407)|Pet Hygiene • Pet Care|Everyday care for happier pets.|Pets are family — their care should feel that way too. Simple, safe, effective everyday hygiene for the people who love them.|soon"
+    else
+      assign d = ''
+  endcase
+  assign parts = d | split: '|'
+  case field
+    when 'name'
+      echo parts[0]
+    when 'tint'
+      echo parts[1]
+    when 'dark'
+      echo parts[2]
+    when 'grad'
+      echo parts[3]
+    when 'cat'
+      echo parts[4]
+    when 'pos'
+      echo parts[5]
+    when 'story'
+      echo parts[6]
+    when 'live'
+      echo parts[7]
+    when 'vars'
+      if parts.size > 0
+        echo '--tint:' | append: parts[1] | append: ';--bdark:' | append: parts[2] | append: ';--grad:' | append: parts[3] | append: ';'
+      else
+        echo '--tint:#F1EDE4;--bdark:#171512;--grad:linear-gradient(150deg,#43403A,#171512);'
+      endif
+  endcase
+-%}

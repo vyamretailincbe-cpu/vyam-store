@@ -1,0 +1,86 @@
+{%- liquid
+  assign current = product.selected_or_first_available_variant
+  assign desc_parts = product.description | split: '<ul'
+-%}
+{%- capture vars -%}{% render 'brand', name: product.vendor, field: 'vars' %}{%- endcapture -%}
+{%- capture cat -%}{% render 'brand', name: product.vendor, field: 'cat' %}{%- endcapture -%}
+<div class="container pd" data-product data-cart-add="{{ routes.cart_add_url }}" data-cart="{{ routes.cart_url }}" style="{{ vars }}">
+  <script type="application/json" data-product-json>{{ product | json }}</script>
+  <div class="pd-media">
+    <div class="carousel-box" data-carousel>
+      {%- for media in product.media -%}
+        <div class="cslide{% if forloop.first %} on{% endif %}" data-group="{{ media.alt | escape }}">
+          {%- if forloop.first -%}
+            {{ media | image_url: width: 1400 | image_tag: widths: '600,900,1200,1400', sizes: '(max-width: 900px) 100vw, 50vw', loading: 'eager', alt: media.alt | default: product.title }}
+          {%- else -%}
+            {{ media | image_url: width: 1400 | image_tag: widths: '600,900,1200,1400', sizes: '(max-width: 900px) 100vw, 50vw', loading: 'lazy', alt: media.alt | default: product.title }}
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="cslide on"><div class="ph-tile"><span>{{ product.vendor }}</span></div></div>
+      {%- endfor -%}
+      {%- if product.media.size > 1 -%}
+        <button class="cnav prev" type="button" aria-label="Previous image" data-prev>←</button>
+        <button class="cnav next" type="button" aria-label="Next image" data-next>→</button>
+        <div class="cdots" data-dots></div>
+      {%- endif -%}
+    </div>
+  </div>
+  <div>
+    <div class="eyebrow" style="margin-bottom:8px">
+      <a href="{{ product.vendor | url_for_vendor }}">{{ product.vendor }}{% if cat != blank %} — {{ cat }}{% endif %}</a>
+    </div>
+    <h1>{{ product.title }}</h1>
+    <div class="intro">{{ desc_parts.first }}</div>
+    <div class="pd-price" data-price>{{ current.price | money_without_trailing_zeros }}</div>
+    <div class="pd-note" data-note>{% render 'per-wash', variant: current %}</div>
+    {%- unless product.has_only_default_variant -%}
+      <div class="vrow">
+        {%- for v in product.variants -%}
+          <button type="button" class="vbtn{% if v.id == current.id %} on{% endif %}" data-variant-id="{{ v.id }}"{% unless v.available %} disabled{% endunless %}>{{ v.title }}</button>
+        {%- endfor -%}
+      </div>
+    {%- endunless -%}
+    {%- form 'product', product -%}
+      <input type="hidden" name="id" value="{{ current.id }}" data-variant-input>
+      <div class="qtyrow">
+        <button type="button" data-qty="-1" aria-label="Decrease">−</button>
+        <input type="number" name="quantity" value="1" min="1" aria-label="Quantity" data-qty-input>
+        <button type="button" data-qty="1" aria-label="Increase">+</button>
+      </div>
+      <button class="btn solid block" type="submit" name="add" data-add{% unless current.available %} disabled{% endunless %}>
+        {%- if current.available %}Add to cart{% else %}Sold out{% endif -%}
+      </button>
+      <div class="addedmsg" data-added hidden>Added to cart. <a href="{{ routes.cart_url }}" style="text-decoration:underline">View cart →</a></div>
+      <div class="errmsg" data-error hidden></div>
+    {%- endform -%}
+    {%- if desc_parts.size > 1 -%}
+      <div class="feat-wrap">
+        {%- for part in desc_parts offset: 1 -%}{{ '<ul' | append: part }}{%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{%- assign shown = 0 -%}
+{%- capture related -%}
+  {%- for p in collections.all.products -%}
+    {%- if p.vendor == product.vendor and p.id != product.id -%}
+      {% render 'card', product: p %}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- if shown == 3 -%}{%- break -%}{%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+  <section>
+    <div class="container">
+      <div class="sec-head"><h2 class="h2">More from {{ product.vendor }}.</h2></div>
+      <div class="pgrid">{{ related }}</div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{ "name": "Product page", "settings": [] }
+{% endschema %}

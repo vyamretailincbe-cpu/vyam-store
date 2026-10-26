@@ -1,0 +1,53 @@
+{%- assign brands = section.settings.brands | split: ',' -%}
+<footer class="site">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">{{ section.settings.logo }}</div>
+        <div class="small-muted">{{ section.settings.tagline }}</div>
+      </div>
+      <div class="foot-col">
+        <h4>Brands</h4>
+        {%- for raw in brands -%}
+          {%- assign n = raw | strip -%}
+          <a href="{{ n | url_for_vendor }}">{{ n }}</a>
+        {%- endfor -%}
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="{{ routes.all_products_collection_url }}">All products</a>
+        <a href="{{ routes.cart_url }}">Cart</a>
+      </div>
+      <div class="foot-col">
+        <h4>{{ section.settings.company_menu.title | default: 'Company' }}</h4>
+        {%- for link in section.settings.company_menu.links -%}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {%- endfor -%}
+      </div>
+      <div class="foot-col">
+        <h4>Policies</h4>
+        {%- for policy in shop.policies -%}
+          <a href="{{ policy.url }}">{{ policy.title }}</a>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="foot-base">
+      <div>© {{ 'now' | date: '%Y' }} {{ section.settings.legal }}</div>
+      <div>{{ section.settings.email }}</div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "logo", "label": "Logo text", "default": "VYAM" },
+    { "type": "richtext", "id": "tagline", "label": "Tagline", "default": "<p>Everyday products.<br>Better ideas.</p>" },
+    { "type": "text", "id": "brands", "label": "Brands (comma separated, must match product vendor)", "default": "SMOD,FYND,KHIND,RIWERS,PET CARE" },
+    { "type": "link_list", "id": "company_menu", "label": "Company menu", "info": "Create a menu with About and Contact." },
+    { "type": "text", "id": "legal", "label": "Company line", "default": "Vyam Trading Ventures LLP · Coimbatore, Tamil Nadu" },
+    { "type": "text", "id": "email", "label": "Email", "default": "vyamretail.incbe@gmail.com" }
+  ]
+}
+{% endschema %}

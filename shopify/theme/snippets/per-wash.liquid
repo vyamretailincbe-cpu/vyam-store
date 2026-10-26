@@ -1,0 +1,9 @@
+{%- comment -%} "₹24.95 per wash" for variants titled like "20 Pods". Mirrors perWash() in vyam.js. {%- endcomment -%}
+{%- liquid
+  assign pods = variant.title | split: ' ' | first | plus: 0
+  if pods > 0
+    assign each = variant.price | times: 1.0 | divided_by: pods | round
+    echo each | money
+    echo ' per wash'
+  endif
+-%}

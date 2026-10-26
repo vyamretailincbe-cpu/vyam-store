@@ -1,0 +1,45 @@
+<section>
+  <div class="container" style="max-width:680px">
+    {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+    <h1 class="display" style="margin-bottom:22px">{{ section.settings.heading }}</h1>
+    {%- if section.settings.text != blank -%}<p class="lead" style="margin-bottom:40px">{{ section.settings.text }}</p>{%- endif -%}
+    {%- form 'contact' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="notice">Thank you — we've received your message and will be in touch.</div>
+      {%- else -%}
+        {%- if form.errors -%}<div class="errmsg" style="margin:0 0 20px">{{ form.errors | default_errors }}</div>{%- endif -%}
+        <div class="frow2">
+          <div class="field"><label for="c-name">Name</label><input id="c-name" type="text" name="contact[name]" required></div>
+          <div class="field"><label for="c-company">Company</label><input id="c-company" type="text" name="contact[company]"></div>
+        </div>
+        <div class="frow2">
+          <div class="field"><label for="c-email">Email</label><input id="c-email" type="email" name="contact[email]" required></div>
+          <div class="field"><label for="c-phone">Phone</label><input id="c-phone" type="tel" name="contact[phone]"></div>
+        </div>
+        <div class="field">
+          <label for="c-interest">I'm interested in</label>
+          <select id="c-interest" name="contact[interest]">
+            <option>Retail Partnership</option>
+            <option>Distribution</option>
+            <option>Manufacturing</option>
+            <option>Business Opportunity</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="c-body">Message</label><textarea id="c-body" name="contact[body]" rows="4"></textarea></div>
+        <button class="btn solid" type="submit">Send enquiry →</button>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact form",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Let's Talk" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Have an opportunity worth exploring?" },
+    { "type": "textarea", "id": "text", "label": "Text" }
+  ]
+}
+{% endschema %}

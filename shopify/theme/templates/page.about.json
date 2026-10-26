@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "intro": {
+      "type": "rich-text",
+      "settings": {
+        "eyebrow": "About VYAM",
+        "heading": "We build consumer brands<br>around everyday needs.",
+        "text": "<p>Vyam Trading Ventures LLP is a consumer-products company building brands across everyday categories. From cleaning and personal care to beauty, hair care and pet care, our focus is simple: identify what people need, find where things can be better, and build products that make sense for everyday life.</p>"
+      }
+    },
+    "strip": {
+      "type": "dark-strip",
+      "settings": {
+        "text": "We're not here to build everything. We're here to build the right things.",
+        "accent_text": "Today, we're building brands. Tomorrow, we want to build categories."
+      }
+    }
+  },
+  "order": ["intro", "strip"]
+}

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {
+        "eyebrow": "Let's Talk",
+        "heading": "Have an opportunity worth exploring?",
+        "text": "We're open to conversations with retailers, distributors, manufacturing partners and people who see an opportunity worth exploring."
+      }
+    }
+  },
+  "order": ["main"]
+}

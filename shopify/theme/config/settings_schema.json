@@ -1,0 +1,19 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "VYAM",
+    "theme_version": "1.0.0",
+    "theme_author": "Vyam Trading Ventures LLP",
+    "theme_documentation_url": "https://github.com/vyamretailincbe-cpu/vyam-store",
+    "theme_support_email": "vyamretail.incbe@gmail.com"
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      { "type": "color", "id": "color_bg", "label": "Background", "default": "#F7F4EE" },
+      { "type": "color", "id": "color_ink", "label": "Text", "default": "#171512" },
+      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#B4481B" },
+      { "type": "color", "id": "color_dark", "label": "Dark strip background", "default": "#131108" }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+{%- assign brands = section.settings.brands | split: ',' -%}
+<section>
+  <div class="container">
+    <div class="sec-head">
+      {%- if section.settings.eyebrow != blank -%}<div class="eyebrow">{{ section.settings.eyebrow }}</div>{%- endif -%}
+      <h2 class="{% if section.settings.large %}display{% else %}h2{% endif %}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lead" style="margin-top:22px">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <div class="bcards{% if section.settings.large %} large{% endif %}">
+      {%- for raw in brands -%}
+        {%- assign n = raw | strip -%}
+        {%- capture vars -%}{% render 'brand', name: n, field: 'vars' %}{%- endcapture -%}
+        {%- capture cat -%}{% render 'brand', name: n, field: 'cat' %}{%- endcapture -%}
+        {%- capture pos -%}{% render 'brand', name: n, field: 'pos' %}{%- endcapture -%}
+        {%- capture live -%}{% render 'brand', name: n, field: 'live' %}{%- endcapture -%}
+        <a class="bcard" href="{{ n | url_for_vendor }}" style="{{ vars }}">
+          <div>
+            <div class="bc-name">{{ n }}</div>
+            <div class="bc-cat">{{ cat }}</div>
+            {%- if section.settings.large and pos != blank -%}<p class="bc-pos">{{ pos }}</p>{%- endif -%}
+          </div>
+          <div class="bc-tag">{% if live == 'live' %}Shop now →{% else %}Coming soon{% endif %}</div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Brand cards",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Brands" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Built for everyday life." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "brands", "label": "Brands (comma separated)", "default": "SMOD,FYND,KHIND,RIWERS,PET CARE", "info": "Colours and copy for each brand live in snippets/brand.liquid." },
+    { "type": "checkbox", "id": "large", "label": "Large cards with positioning line", "default": false }
+  ],
+  "presets": [{ "name": "Brand cards" }]
+}
+{% endschema %}
