@@ -34,7 +34,18 @@
     </div>
     <h1>{{ product.title }}</h1>
     <div class="intro">{{ desc_parts.first }}</div>
-    <div class="pd-price" data-price>{{ current.price | money_without_trailing_zeros }}</div>
+    {%- liquid
+      assign on_sale = false
+      if current.compare_at_price > current.price
+        assign on_sale = true
+        assign save_pct = current.compare_at_price | minus: current.price | times: 100 | divided_by: current.compare_at_price
+      endif
+    -%}
+    <div class="pd-price">
+      <span data-price>{{ current.price | money_without_trailing_zeros }}</span>
+      <s class="was" data-compare{% unless on_sale %} hidden{% endunless %}>{{ current.compare_at_price | money_without_trailing_zeros }}</s>
+      <span class="save" data-save{% unless on_sale %} hidden{% endunless %}>Save {{ save_pct }}%</span>
+    </div>
     <div class="pd-note" data-note>{% render 'per-wash', variant: current %}</div>
     {%- unless product.has_only_default_variant -%}
       <div class="vrow">

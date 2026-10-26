@@ -12,7 +12,7 @@
     <h3>{{ product.title }}</h3>
     <div class="pshort">{{ product.description | split: '<ul' | first | strip_html | truncatewords: 16 }}</div>
     {%- if product.available -%}
-      <div class="pprice">{% if product.price_varies %}From {% endif %}{{ product.price_min | money_without_trailing_zeros }}</div>
+      <div class="pprice">{% if product.price_varies %}From {% endif %}{{ product.price_min | money_without_trailing_zeros }}{% if product.compare_at_price_min > product.price_min %} <s class="was">{{ product.compare_at_price_min | money_without_trailing_zeros }}</s>{% endif %}</div>
     {%- else -%}
       <div class="soon">Sold out</div>
     {%- endif -%}

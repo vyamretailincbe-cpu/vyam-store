@@ -96,6 +96,13 @@
       current = v;
       idInput.value = v.id;
       $("[data-price]", root).textContent = money(v.price);
+      var onSale = v.compare_at_price > v.price;
+      var was = $("[data-compare]", root), save = $("[data-save]", root);
+      was.hidden = save.hidden = !onSale;
+      if (onSale) {
+        was.textContent = money(v.compare_at_price);
+        save.textContent = "Save " + Math.floor((v.compare_at_price - v.price) * 100 / v.compare_at_price) + "%";
+      }
       $("[data-note]", root).textContent = perWash(v);
       addBtn.disabled = !v.available;
       addBtn.textContent = v.available ? "Add to cart" : "Sold out";

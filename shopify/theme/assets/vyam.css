@@ -109,6 +109,8 @@ section{padding:clamp(60px,8vw,110px) 0;}
 .qtyrow button{width:44px;height:44px;border:none;background:none;font-size:1.1rem;}
 .qtyrow span,.qtyrow input{min-width:40px;width:44px;text-align:center;font-weight:600;font-size:1rem;font-family:inherit;border:none;background:none;color:var(--ink);-moz-appearance:textfield;appearance:textfield;}
 .qtyrow input::-webkit-outer-spin-button,.qtyrow input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.was{color:var(--muted);font-weight:500;font-size:.8em;margin-left:6px;}
+.save{display:inline-block;margin-left:10px;padding:4px 9px;border-radius:999px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;vertical-align:middle;}
 .addedmsg{color:var(--ok);font-weight:600;margin-top:12px;font-size:.95rem;}
 
 /* brand hero */
