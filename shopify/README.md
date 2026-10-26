@@ -18,7 +18,7 @@ Rebuild the zip after editing the theme: `cd shopify/theme && rm -f ../vyam-them
 3. **Homepage banner** — Customize → Hero banner → upload the banner image. Until you do, it loads from the old Higgsfield URL.
 4. **Menus** — Online Store → Navigation:
    - `Main menu`: Shop → `/collections/all`, Brands → `/collections`, About → page "About", Contact → page "Contact".
-   - Create a `Footer company` menu (About, Contact) and select it in Customize → Footer.
+   - Create a menu with handle `footer-company` (About, Contact); the footer uses it by default.
 5. **Pages** — Online Store → Pages:
    - "About" → template `page.about`
    - "Contact" → template `page.contact` (enquiries arrive at the store email)

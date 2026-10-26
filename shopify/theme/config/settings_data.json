@@ -1,1 +1,8 @@
-{ "current": "Default", "presets": { "Default": {} } }
+{
+  "current": {
+    "sections": {
+      "footer": { "type": "footer", "settings": { "company_menu": "footer-company" } }
+    }
+  },
+  "presets": { "Default": {} }
+}
