@@ -3,10 +3,23 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>{{ page_title }}{% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}</title>
-    {%- if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+    {%- liquid
+      # The homepage title/description can be set in the theme editor (Theme settings → Search & sharing)
+      assign seo_title = page_title
+      assign seo_description = page_description
+      if request.page_type == 'index'
+        if settings.home_title != blank
+          assign seo_title = settings.home_title
+        endif
+        if settings.home_description != blank
+          assign seo_description = settings.home_description
+        endif
+      endif
+    -%}
+    <title>{{ seo_title }}{% unless seo_title contains shop.name or request.page_type == 'index' %} | {{ shop.name }}{% endunless %}</title>
+    {%- if seo_description != blank %}<meta name="description" content="{{ seo_description | escape }}">{% endif %}
     <link rel="canonical" href="{{ canonical_url }}">
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', seo_title: seo_title, seo_description: seo_description, share_image: settings.share_image %}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">

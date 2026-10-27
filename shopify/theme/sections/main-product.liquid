@@ -42,8 +42,8 @@
       endif
     -%}
     <div class="pd-price">
-      <span data-price>{{ current.price | money_without_trailing_zeros }}</span>
-      <s class="was" data-compare{% unless on_sale %} hidden{% endunless %}>{{ current.compare_at_price | money_without_trailing_zeros }}</s>
+      <span data-price>{% render 'price', amount: current.price %}</span>
+      <s class="was" data-compare{% unless on_sale %} hidden{% endunless %}>{% render 'price', amount: current.compare_at_price %}</s>
       <span class="save" data-save{% unless on_sale %} hidden{% endunless %}>Save {{ save_pct }}%</span>
     </div>
     <div class="pd-note" data-note>{% render 'per-wash', variant: current %}</div>

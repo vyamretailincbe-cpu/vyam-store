@@ -1,8 +1,18 @@
 {
   "current": {
+    "home_title": "VYAM – SMOD Laundry Pods & Everyday Products | Shop Online in India",
+    "home_description": "Shop SMOD pre-measured laundry pods from VYAM: Regular, Sports, Baby, Socks and Intimate Wear. No measuring, no mess. Flat ₹100 shipping across India.",
+    "share_image": "shopify://shop_images/smod-banner.png",
     "sections": {
-      "footer": { "type": "footer", "settings": { "company_menu": "footer-company" } }
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "company_menu": "footer-company"
+        }
+      }
     }
   },
-  "presets": { "Default": {} }
+  "presets": {
+    "Default": {}
+  }
 }

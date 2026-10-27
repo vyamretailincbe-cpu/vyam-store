@@ -8,7 +8,8 @@
         "text": "We build consumer brands around the way people live, care and clean every day. SMOD laundry pods are here — more brands are on the way.",
         "button_label": "Shop now →",
         "image_url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3IMyctpTEDyautVxPt2exFQaBqy/b3b640e5-798b-4551-a4c8-2322e8c51456.png",
-        "image_alt": "SMOD — Laundry Pods for Every Wash: Socks, Intimate Care, Sports, Baby and Regular"
+        "image_alt": "SMOD — Laundry Pods for Every Wash: Socks, Intimate Care, Sports, Baby and Regular",
+        "image": "shopify://shop_images/smod-banner.png"
       }
     },
     "featured": {
@@ -39,5 +40,10 @@
       }
     }
   },
-  "order": ["hero", "featured", "strip", "brands"]
+  "order": [
+    "hero",
+    "featured",
+    "strip",
+    "brands"
+  ]
 }

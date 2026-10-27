@@ -10,10 +10,53 @@
   {
     "name": "Colors",
     "settings": [
-      { "type": "color", "id": "color_bg", "label": "Background", "default": "#F7F4EE" },
-      { "type": "color", "id": "color_ink", "label": "Text", "default": "#171512" },
-      { "type": "color", "id": "color_accent", "label": "Accent", "default": "#B4481B" },
-      { "type": "color", "id": "color_dark", "label": "Dark strip background", "default": "#131108" }
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background",
+        "default": "#F7F4EE"
+      },
+      {
+        "type": "color",
+        "id": "color_ink",
+        "label": "Text",
+        "default": "#171512"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent",
+        "default": "#B4481B"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "Dark strip background",
+        "default": "#131108"
+      }
+    ]
+  },
+  {
+    "name": "Search & sharing",
+    "settings": [
+      {
+        "type": "text",
+        "id": "home_title",
+        "label": "Homepage title (Google)",
+        "info": "Used instead of the store name on the homepage. About 60 characters."
+      },
+      {
+        "type": "textarea",
+        "id": "home_description",
+        "label": "Homepage description (Google)",
+        "info": "About 155 characters."
+      },
+      {
+        "type": "image_picker",
+        "id": "share_image",
+        "label": "Social sharing image",
+        "info": "Shown when a page without its own image is shared on WhatsApp, Facebook, etc. 1200×630 works best."
+      }
     ]
   }
 ]

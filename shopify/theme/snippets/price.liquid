@@ -1,0 +1,8 @@
+{%- comment -%}
+  Formats a money amount (in paise) as ₹ regardless of the store's currency format, e.g. ₹380 or ₹24.95.
+  Mirrors money() in vyam.js. Usage: {% render 'price', amount: product.price %}
+{%- endcomment -%}
+{%- liquid
+  assign formatted = amount | money_without_currency | remove: '.00'
+  echo '₹' | append: formatted
+-%}
