@@ -1,7 +1,7 @@
 # VYAM store policies
 
 Paste each section into Shopify admin → Settings → Policies → (policy name). Copy from the rendered view so headings keep their formatting.
-Based on the policies from the original VYAM website, updated for Shopify checkout, flat ₹100 shipping and India-only delivery.
+Based on the policies from the original VYAM website, updated for Shopify checkout, free shipping and India-only delivery.
 Privacy policy: keep Shopify's automated one.
 
 ---
@@ -20,7 +20,7 @@ If your order arrives damaged, defective, or different from what you ordered, co
 
 ### Returns
 
-Our products are household and personal care consumables, so opened or used products cannot be returned for hygiene and safety reasons, unless they are defective. Unopened products in their original packaging can be returned within 7 days of delivery. For non-defective returns, the return shipping cost is paid by the customer and the original ₹100 shipping fee is not refunded.
+Our products are household and personal care consumables, so opened or used products cannot be returned for hygiene and safety reasons, unless they are defective. Unopened products in their original packaging can be returned within 7 days of delivery. For non-defective returns, the return shipping cost is paid by the customer.
 
 ### Refund timelines
 
@@ -52,7 +52,7 @@ An order is confirmed once your payment is successfully processed at checkout an
 
 ### Shipping
 
-We ship within India only, for a flat fee of ₹100 per order. Delivery timelines are described in our Shipping Policy. Ownership of products passes to you on delivery.
+We ship within India only, and shipping is free on all orders. Delivery timelines are described in our Shipping Policy. Ownership of products passes to you on delivery.
 
 ### Returns and refunds
 
@@ -86,7 +86,7 @@ We currently ship within India only. We do not accept orders for delivery outsid
 
 ### Shipping charges
 
-A flat shipping fee of ₹100 applies to every order, whatever the number of items. The fee is shown at checkout before you pay.
+Shipping is free on every order, with no minimum order value.
 
 ### Dispatch and delivery times
 
