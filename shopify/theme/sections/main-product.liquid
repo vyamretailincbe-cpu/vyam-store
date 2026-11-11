@@ -6,7 +6,7 @@
 {%- capture cat -%}{% render 'brand', name: product.vendor, field: 'cat' %}{%- endcapture -%}
 <div class="container pd" data-product data-cart-add="{{ routes.cart_add_url }}" data-cart="{{ routes.cart_url }}" style="{{ vars }}">
   <script type="application/json" data-product-json>{{ product | json }}</script>
-  <script type="application/ld+json">{{ product | structured_data }}</script>
+  {% render 'product-jsonld', product: product %}
   <div class="pd-media">
     <div class="carousel-box" data-carousel>
       {%- for media in product.media -%}
